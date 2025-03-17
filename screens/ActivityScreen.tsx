@@ -7,11 +7,16 @@ import { TopInset } from "@/components/TopInsets";
 import { PageHeader } from "@/components/PageHeader";
 
 import { ActivityLoader } from "@/components/ActivityLoader";
+import { useQuery } from "@tanstack/react-query";
+
+const activitiesQueryFn = async () =>
+  await fetch("/api/activities").then((res) => res.json());
 
 function useActivities() {
-  // TODO(api-routes): Use `react-query` to fetch activities
-  const data: ActivityProps[] = [];
-  const isLoading = true;
+  const { data, isLoading } = useQuery({
+    queryFn: activitiesQueryFn,
+    queryKey: ["activities"],
+  });
 
   return { activities: data as ActivityProps[], isLoading };
 }

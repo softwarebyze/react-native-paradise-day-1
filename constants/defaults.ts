@@ -36,7 +36,7 @@ export const defaults = {
       sceneStyle: {
         backgroundColor: theme.colors.white,
       },
-      swipeEnabled: false,
+      // swipeEnabled: false,
     },
   },
 } as const;
