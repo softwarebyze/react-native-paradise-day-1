@@ -1,15 +1,15 @@
-import { View, StyleSheet } from "react-native";
-import React, { useState, useEffect } from "react";
+import Carousel from "@/components/Carousel";
+import { FloatingMenu } from "@/components/FloatingMenu";
+import { HomeScreenLoader } from "@/components/HomeLoader";
 import { SearchBar } from "@/components/SearchBar";
 import { Section } from "@/components/Section";
-import { theme } from "@/constants/theme";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Tile } from "@/components/Tile";
 import { assets } from "@/constants/assets";
-import { FloatingMenu } from "@/components/FloatingMenu";
-import Carousel from "@/components/Carousel";
+import { theme } from "@/constants/theme";
 import { notImplemented } from "@/utils/notImplemented";
-import { HomeScreenLoader } from "@/components/HomeLoader";
+import React, { useEffect, useState } from "react";
+import { Linking, StyleSheet, View } from "react-native";
 
 const images = [
   "https://img.freepik.com/free-vector/changing-flat-tire-concept-illustration_114360-22123.jpg",
@@ -74,6 +74,13 @@ export function HomeScreen(props: HomeScreenProps) {
             },
             bounces: false,
             scrollEnabled: false,
+          }}
+          images={images}
+          openBrowser={() => {
+            Linking.openURL("https://www.freepik.com");
+          }}
+          onImageClick={(image) => {
+            console.log("image clicked", image);
           }}
         />
       </View>
